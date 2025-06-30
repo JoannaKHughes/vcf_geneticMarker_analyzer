@@ -1,0 +1,7 @@
+2025-06-27 11:55:05,160 INFO: Starting marker comparison pipeline
+2025-06-27 11:55:05,163 INFO: Loaded 200 variants from mini_Horse_101sample_GATK_SN.vcf (101 samples)
+2025-06-27 11:55:05,169 INFO: Loaded 200 variants from mini_Pioneer100CEH_03212022.vcf (254 samples)
+2025-06-27 11:55:05,191 INFO: Loaded 378 markers from sheet 'ISAG Core'
+2025-06-27 11:55:05,201 INFO: Loaded 397 markers from sheet 'ISAG Back up'
+2025-06-27 11:55:05,204 INFO: Loaded 84 markers from sheet 'X_Y'
+2025-06-27 11:55:05,425 INFO: Analysis complete. Output written to C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\TEST_marker_comparison_miniVCF.xlsx

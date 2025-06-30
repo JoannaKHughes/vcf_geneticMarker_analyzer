@@ -1,0 +1,98 @@
+2025-06-29 20:37:47,356 - INFO - Initialized analyzer: Excel=C:\Users\joanna\Documents\Python_VSCode\Pangenome\ISAG_Marker_List.xlsx, VCF_folder=C:\Users\joanna\Documents\Python_VSCode\Pangenome\tests\mini_vcf, Output=C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\TEST_marker_comparison_miniVCF.xlsx
+2025-06-29 20:37:47,357 - INFO - Starting genetic marker analysis...
+2025-06-29 20:37:47,357 - INFO - Found 2 VCF files
+2025-06-29 20:37:47,357 - INFO - Reading Excel workbook...
+2025-06-29 20:37:47,513 - INFO - Loaded 378 markers from sheet 'ISAG Core'
+2025-06-29 20:37:47,524 - ERROR - Error reading sheet 'ISAG Backup': Worksheet named 'ISAG Backup' not found
+2025-06-29 20:37:47,538 - WARNING - Missing columns in X_Y: ['List']
+2025-06-29 20:37:47,540 - INFO - Loaded 84 markers from sheet 'X_Y'
+2025-06-29 20:37:47,541 - INFO - Discovering VCF files...
+2025-06-29 20:37:47,541 - INFO - Found 2 VCF files
+2025-06-29 20:37:47,541 - INFO - Processing sheet: ISAG Core
+2025-06-29 20:37:47,541 - INFO - Processing 378 markers from sheet 'ISAG Core'...
+2025-06-29 20:37:47,586 - INFO - Processing sheet: X_Y
+2025-06-29 20:37:47,586 - INFO - Processing 84 markers from sheet 'X_Y'...
+2025-06-29 20:37:47,590 - INFO - Creating output Excel file...
+2025-06-29 20:37:47,591 - ERROR - Analysis failed: [Errno 13] Permission denied: 'C:\\Users\\joanna\\Documents\\Python_VSCode\\Pangenome\\output\\TEST_marker_comparison_miniVCF.xlsx'
+2025-06-29 20:37:47,591 - ERROR - Fatal error: [Errno 13] Permission denied: 'C:\\Users\\joanna\\Documents\\Python_VSCode\\Pangenome\\output\\TEST_marker_comparison_miniVCF.xlsx'
+2025-06-29 20:38:20,052 - INFO - Initialized analyzer: Excel=C:\Users\joanna\Documents\Python_VSCode\Pangenome\ISAG_Marker_List.xlsx, VCF_folder=C:\Users\joanna\Documents\Python_VSCode\Pangenome\tests\mini_vcf, Output=C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\TEST_marker_comparison_miniVCF.xlsx
+2025-06-29 20:38:20,052 - INFO - Starting genetic marker analysis...
+2025-06-29 20:38:20,053 - INFO - Found 2 VCF files
+2025-06-29 20:38:20,053 - INFO - Reading Excel workbook...
+2025-06-29 20:38:20,207 - INFO - Loaded 378 markers from sheet 'ISAG Core'
+2025-06-29 20:38:20,229 - INFO - Loaded 397 markers from sheet 'ISAG Back up'
+2025-06-29 20:38:20,243 - WARNING - Missing columns in X_Y: ['List']
+2025-06-29 20:38:20,244 - INFO - Loaded 84 markers from sheet 'X_Y'
+2025-06-29 20:38:20,244 - INFO - Discovering VCF files...
+2025-06-29 20:38:20,244 - INFO - Found 2 VCF files
+2025-06-29 20:38:20,244 - INFO - Processing sheet: ISAG Core
+2025-06-29 20:38:20,245 - INFO - Processing 378 markers from sheet 'ISAG Core'...
+2025-06-29 20:38:20,273 - INFO - Processing sheet: ISAG Back up
+2025-06-29 20:38:20,273 - INFO - Processing 397 markers from sheet 'ISAG Back up'...
+2025-06-29 20:38:20,288 - INFO - Processing sheet: X_Y
+2025-06-29 20:38:20,288 - INFO - Processing 84 markers from sheet 'X_Y'...
+2025-06-29 20:38:20,293 - INFO - Creating output Excel file...
+2025-06-29 20:38:20,293 - ERROR - Analysis failed: [Errno 13] Permission denied: 'C:\\Users\\joanna\\Documents\\Python_VSCode\\Pangenome\\output\\TEST_marker_comparison_miniVCF.xlsx'
+2025-06-29 20:38:20,294 - ERROR - Fatal error: [Errno 13] Permission denied: 'C:\\Users\\joanna\\Documents\\Python_VSCode\\Pangenome\\output\\TEST_marker_comparison_miniVCF.xlsx'
+2025-06-29 20:38:36,147 - INFO - Initialized analyzer: Excel=C:\Users\joanna\Documents\Python_VSCode\Pangenome\ISAG_Marker_List.xlsx, VCF_folder=C:\Users\joanna\Documents\Python_VSCode\Pangenome\tests\mini_vcf, Output=C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\TEST_marker_comparison_miniVCF.xlsx
+2025-06-29 20:38:36,147 - INFO - Starting genetic marker analysis...
+2025-06-29 20:38:36,148 - INFO - Found 2 VCF files
+2025-06-29 20:38:36,148 - INFO - Reading Excel workbook...
+2025-06-29 20:38:36,304 - INFO - Loaded 378 markers from sheet 'ISAG Core'
+2025-06-29 20:38:36,325 - INFO - Loaded 397 markers from sheet 'ISAG Back up'
+2025-06-29 20:38:36,339 - WARNING - Missing columns in X_Y: ['List']
+2025-06-29 20:38:36,340 - INFO - Loaded 84 markers from sheet 'X_Y'
+2025-06-29 20:38:36,340 - INFO - Discovering VCF files...
+2025-06-29 20:38:36,340 - INFO - Found 2 VCF files
+2025-06-29 20:38:36,340 - INFO - Processing sheet: ISAG Core
+2025-06-29 20:38:36,340 - INFO - Processing 378 markers from sheet 'ISAG Core'...
+2025-06-29 20:38:36,368 - INFO - Processing sheet: ISAG Back up
+2025-06-29 20:38:36,368 - INFO - Processing 397 markers from sheet 'ISAG Back up'...
+2025-06-29 20:38:36,383 - INFO - Processing sheet: X_Y
+2025-06-29 20:38:36,383 - INFO - Processing 84 markers from sheet 'X_Y'...
+2025-06-29 20:38:36,387 - INFO - Creating output Excel file...
+2025-06-29 20:38:36,412 - INFO - Created sheet: ISAG_Core_Results with 378 markers
+2025-06-29 20:38:36,436 - INFO - Created sheet: ISAG_Back_up_Results with 397 markers
+2025-06-29 20:38:36,443 - INFO - Created sheet: X_Y_Results with 84 markers
+2025-06-29 20:38:36,470 - INFO - Created Missing_markers sheet with 859 entries
+2025-06-29 20:38:36,487 - INFO - Created Allele_representation sheet with 859 entries
+2025-06-29 20:38:36,692 - INFO - Output Excel file created: C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\TEST_marker_comparison_miniVCF.xlsx
+2025-06-29 20:38:36,692 - INFO - Analysis completed successfully!
+2025-06-29 20:38:36,693 - INFO - Total runtime: 0.55 seconds
+2025-06-29 20:38:36,693 - INFO - Processed 859 markers
+2025-06-29 20:38:36,693 - INFO - Analyzed 2 VCF files
+2025-06-29 20:38:36,693 - INFO - Exact matches: 0
+2025-06-29 20:38:36,693 - INFO - Proximity matches: 0
+2025-06-29 20:38:36,693 - INFO - No matches: 859
+2025-06-29 20:45:32,638 - INFO - Initialized analyzer: Excel=C:\Users\joanna\Documents\Python_VSCode\Pangenome\ISAG_Marker_List.xlsx, VCF_folder=C:\Users\joanna\Documents\Python_VSCode\Pangenome\vcf, Output=C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\V3marker_comparison_multVCF.xlsx
+2025-06-29 20:45:32,639 - INFO - Starting genetic marker analysis...
+2025-06-29 20:45:32,639 - INFO - Found 2 VCF files
+2025-06-29 20:45:32,639 - INFO - Reading Excel workbook...
+2025-06-29 20:45:32,791 - INFO - Loaded 378 markers from sheet 'ISAG Core'
+2025-06-29 20:45:32,812 - INFO - Loaded 397 markers from sheet 'ISAG Back up'
+2025-06-29 20:45:32,826 - WARNING - Missing columns in X_Y: ['List']
+2025-06-29 20:45:32,827 - INFO - Loaded 84 markers from sheet 'X_Y'
+2025-06-29 20:45:32,827 - INFO - Discovering VCF files...
+2025-06-29 20:45:32,828 - INFO - Found 2 VCF files
+2025-06-29 20:45:32,828 - INFO - Processing sheet: ISAG Core
+2025-06-29 20:45:32,828 - INFO - Processing 378 markers from sheet 'ISAG Core'...
+2025-06-29 23:22:36,612 - ERROR - Error reading VCF file C:\Users\joanna\Documents\Python_VSCode\Pangenome\vcf\Horse_101sample_GATK_SN.vcf: 
+2025-06-30 01:39:51,566 - ERROR - Error reading VCF file C:\Users\joanna\Documents\Python_VSCode\Pangenome\vcf\Pioneer100CEH_03212022.vcf: 
+2025-06-30 01:47:33,337 - INFO - Processing sheet: ISAG Back up
+2025-06-30 01:47:33,338 - INFO - Processing 397 markers from sheet 'ISAG Back up'...
+2025-06-30 01:47:33,359 - INFO - Processing sheet: X_Y
+2025-06-30 01:47:33,359 - INFO - Processing 84 markers from sheet 'X_Y'...
+2025-06-30 01:47:33,371 - INFO - Creating output Excel file...
+2025-06-30 01:47:33,454 - INFO - Created sheet: ISAG_Core_Results with 378 markers
+2025-06-30 01:47:33,479 - INFO - Created sheet: ISAG_Back_up_Results with 397 markers
+2025-06-30 01:47:33,486 - INFO - Created sheet: X_Y_Results with 84 markers
+2025-06-30 01:47:33,504 - INFO - Created Missing_markers sheet with 859 entries
+2025-06-30 01:47:33,521 - INFO - Created Allele_representation sheet with 859 entries
+2025-06-30 01:47:33,775 - INFO - Output Excel file created: C:\Users\joanna\Documents\Python_VSCode\Pangenome\output\V3marker_comparison_multVCF.xlsx
+2025-06-30 01:47:33,775 - INFO - Analysis completed successfully!
+2025-06-30 01:47:33,775 - INFO - Total runtime: 18121.14 seconds
+2025-06-30 01:47:33,775 - INFO - Processed 859 markers
+2025-06-30 01:47:33,776 - INFO - Analyzed 2 VCF files
+2025-06-30 01:47:33,776 - INFO - Exact matches: 0
+2025-06-30 01:47:33,776 - INFO - Proximity matches: 0
+2025-06-30 01:47:33,776 - INFO - No matches: 859
