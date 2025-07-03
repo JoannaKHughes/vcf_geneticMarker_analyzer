@@ -480,14 +480,70 @@ def read_vcf_file(vcf_path):
     sample_names = []
     
     try:
-        with open(vcf_path, 'r') as f:
+        # Log file path for debugging
+        logger.info(f"Reading VCF file: {vcf_path} (Size: {os.path.getsize(vcf_path)} bytes)")
+        
+        # DIAGNOSTIC: Test file encoding and readability
+        logger.info("DIAGNOSTIC: Testing file encoding and initial content...")
+        
+        # Test 1: Check if file can be opened with different encodings
+        test_encodings = ['utf-8', 'utf-8-sig', 'latin-1', 'cp1252']
+        working_encoding = None
+        
+        for enc in test_encodings:
+            try:
+                with open(vcf_path, 'r', encoding=enc) as test_f:
+                    # Try to read first 1000 characters
+                    test_content = test_f.read(1000)
+                    logger.info(f"DIAGNOSTIC: Encoding '{enc}' - SUCCESS. First 100 chars: {repr(test_content[:100])}")
+                    working_encoding = enc
+                    break
+            except UnicodeDecodeError as e:
+                logger.info(f"DIAGNOSTIC: Encoding '{enc}' - FAILED: {e}")
+            except Exception as e:
+                logger.error(f"DIAGNOSTIC: Encoding '{enc}' - ERROR: {e}")
+        
+        if not working_encoding:
+            logger.error("DIAGNOSTIC: No compatible encoding found!")
+            # Try binary mode to check for binary content
+            with open(vcf_path, 'rb') as bin_f:
+                first_bytes = bin_f.read(100)
+                logger.error(f"DIAGNOSTIC: First 100 bytes (binary): {first_bytes}")
+            raise ValueError("Unable to determine file encoding")
+        
+        # Test 2: Check line endings and file structure
+        logger.info(f"DIAGNOSTIC: Using encoding '{working_encoding}' for detailed analysis...")
+        with open(vcf_path, 'rb') as bin_f:
+            sample_bytes = bin_f.read(1000)
+            crlf_count = sample_bytes.count(b'\r\n')
+            lf_count = sample_bytes.count(b'\n') - crlf_count
+            cr_count = sample_bytes.count(b'\r') - crlf_count
+            logger.info(f"DIAGNOSTIC: Line endings - CRLF: {crlf_count}, LF: {lf_count}, CR: {cr_count}")
+            
+            # Check for null bytes or other binary markers
+            null_bytes = sample_bytes.count(b'\x00')
+            if null_bytes > 0:
+                logger.warning(f"DIAGNOSTIC: Found {null_bytes} null bytes - possible binary content!")
+        
+        # Use the working encoding for actual file processing
+        logger.info(f"DIAGNOSTIC: Proceeding with encoding '{working_encoding}'")
+        with open(vcf_path, 'r', encoding=working_encoding, errors='replace') as f:
             for line_num, line in enumerate(f, 1):
+                # DIAGNOSTIC: Log problematic lines
+                if line_num <= 5:
+                    logger.info(f"DIAGNOSTIC: Line {line_num} length={len(line)}, ends_with={repr(line[-10:]) if len(line) >= 10 else repr(line)}")
+                
+                # Check for problematic characters every 1000 lines
+                if line_num % 1000 == 0:
+                    try:
+                        line.encode('utf-8')
+                    except UnicodeEncodeError as e:
+                        logger.warning(f"DIAGNOSTIC: Line {line_num} has encoding issues: {e}")
                 line_count += 1
                 
-                #print first 100 lines of the VCF file to text file
-                if  line_num <= 10000 and line_num >= 1000:
-                    with open('C:/Users/joanna/Documents/Python_VSCode/Pangenome/output/vcf_first_100_lines.txt', 'a') as f100:
-                        f100.write(line)
+                # Debug: log first 5 lines
+                if line_num <= 5:
+                    logger.debug(f"Line {line_num}: {line.strip()}")
                 
                 if line.startswith('#'): 
                     # Capture sample names from header
@@ -539,8 +595,54 @@ def read_vcf_file(vcf_path):
     except FileNotFoundError:
         logger.error(f"VCF file not found: {vcf_path}")
         sys.exit(1)
+    except OSError as e:
+        logger.error(f"OS error reading VCF file: {vcf_path}")
+        logger.error(f"Error details: {e.errno} - {e.strerror}")
+        logger.error(f"File info: Size={os.path.getsize(vcf_path)} bytes, Exists={os.path.exists(vcf_path)}")
+        
+        # DIAGNOSTIC: Enhanced handling for Errno 22 (Invalid argument)
+        if e.errno == 22:  # ERROR_INVALID_PARAMETER on Windows
+            logger.error("DIAGNOSTIC: [Errno 22] Invalid argument detected!")
+            logger.error("DIAGNOSTIC: This typically indicates:")
+            logger.error("DIAGNOSTIC: 1. File encoding issues (non-UTF-8 characters)")
+            logger.error("DIAGNOSTIC: 2. File corruption or binary data in text file")
+            logger.error("DIAGNOSTIC: 3. Invalid file path characters")
+            logger.error("DIAGNOSTIC: 4. File being accessed by another process")
+            
+            # Additional diagnostics for Errno 22
+            try:
+                import stat
+                file_stat = os.stat(vcf_path)
+                logger.error(f"DIAGNOSTIC: File mode: {stat.filemode(file_stat.st_mode)}")
+                logger.error(f"DIAGNOSTIC: File size: {file_stat.st_size} bytes")
+                logger.error(f"DIAGNOSTIC: Last modified: {file_stat.st_mtime}")
+                
+                # Check if file is actually readable
+                with open(vcf_path, 'rb') as test_file:
+                    first_kb = test_file.read(1024)
+                    logger.error(f"DIAGNOSTIC: First 1KB binary read successful")
+                    logger.error(f"DIAGNOSTIC: Contains null bytes: {b'\\x00' in first_kb}")
+                    logger.error(f"DIAGNOSTIC: First 50 bytes: {first_kb[:50]}")
+                    
+            except Exception as diag_e:
+                logger.error(f"DIAGNOSTIC: Additional diagnosis failed: {diag_e}")
+        
+        sys.exit(1)
+    except UnicodeDecodeError as e:
+        logger.error(f"DIAGNOSTIC: Unicode decode error in VCF file: {vcf_path}")
+        logger.error(f"DIAGNOSTIC: Error details: {e}")
+        logger.error(f"DIAGNOSTIC: Error position: {e.start}-{e.end}")
+        logger.error(f"DIAGNOSTIC: Problematic bytes: {e.object[e.start:e.end] if hasattr(e, 'object') else 'N/A'}")
+        
+        # Try to provide file encoding suggestions
+        logger.error("DIAGNOSTIC: Suggested solutions:")
+        logger.error("DIAGNOSTIC: 1. Check file encoding - may not be UTF-8")
+        logger.error("DIAGNOSTIC: 2. File may contain binary data")
+        logger.error("DIAGNOSTIC: 3. Try opening with different encoding (latin-1, cp1252)")
+        sys.exit(1)
     except Exception as e:
-        logger.error(f"Error reading VCF file: {e}")
+        logger.error(f"Unexpected error reading VCF file: {vcf_path}")
+        logger.error(f"Error: {type(e).__name__} - {str(e)}")
         logger.error(traceback.format_exc())
         sys.exit(1)
     
